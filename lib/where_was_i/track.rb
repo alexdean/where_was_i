@@ -18,9 +18,12 @@ module WhereWasI
     # @param [Float] elevation elevation
     # @param [Time] time time at the given location
     def add_point(lat:, lon:, elevation:, time:)
+      time = Time.parse(time) if ! time.is_a?(Time)
+
       @start_time = time if @start_time.nil? || time < @start_time
       @end_time   = time if @end_time.nil?   || time > @end_time
       @points[time.to_i] = [lat, lon, elevation]
+
       true
     end
 
@@ -36,6 +39,7 @@ module WhereWasI
     # @param time [Time]
     # @return Boolean
     def in_time_range?(time)
+      time = Time.parse(time) if ! time.is_a?(Time)
       time_range.cover?(time)
     end
 

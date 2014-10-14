@@ -27,6 +27,7 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "guard",          "~> 2.6"
   spec.add_development_dependency "guard-rspec",    "~> 4.3.1"
   spec.add_development_dependency "yard",           "~> 0.8.7"
-  spec.add_development_dependency "github-markup", "~> 1.3.0"
-  spec.add_development_dependency "redcarpet"
+  spec.add_development_dependency "github-markup",  "~> 1.3.0"
+  spec.add_development_dependency "redcarpet",      "~> 3.2.0"
+  spec.add_development_dependency "ruby_gntp",      "~> 0.3.0"
 end
