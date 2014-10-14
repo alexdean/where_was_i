@@ -9,6 +9,7 @@ w.at('2014-01-01T00:00:00Z')
 ```
 
 `at` will return `nil` if the supplied time is not covered by the GPX data.
+
 ```ruby
 w = WhereWasI::Gpx.new(gpx_file: '/home/alex/track.gpx')
 w.at('2014-01-02T00:00:00Z')
