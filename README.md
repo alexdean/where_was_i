@@ -2,6 +2,10 @@
 
 Given a GPX data file and a time reference, infer a location.
 
+[API documentation](rubydoc.info/github/alexdean/where_was_i/master/frames) is available on rubydoc.org.
+
+## Examples
+
 ```ruby
 w = WhereWasI::Gpx.new(gpx_file: '/home/alex/track.gpx')
 w.at('2014-01-01T00:00:00Z')
