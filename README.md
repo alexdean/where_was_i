@@ -2,7 +2,7 @@
 
 Given a GPX data file and a time reference, infer a location.
 
-[API documentation](rubydoc.info/github/alexdean/where_was_i/master/frames) is available on rubydoc.org.
+[API documentation](http://rubydoc.info/github/alexdean/where_was_i/master/frames) is available on rubydoc.org.
 
 ## Examples
 
