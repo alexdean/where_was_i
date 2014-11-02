@@ -12,10 +12,22 @@ w.at('2014-01-01T00:00:00Z')
 #=> {lat: 48.0, lon: 98.0, elevation: 1000}
 ```
 
-`at` will return `nil` if the supplied time is not covered by the GPX data.
+By default, `at` will return `nil` if the supplied time is not covered by the GPX data.
 
 ```ruby
 w = WhereWasI::Gpx.new(gpx_file: '/home/alex/track.gpx')
 w.at('2014-01-02T00:00:00Z')
 #=> nil
+```
+
+If you would instead like to interpolate a location from the ending and beginning locations
+of the nearest track segments, you can instead do:
+
+```ruby
+w = WhereWasI::Gpx.new(
+  gpx_file: '/home/alex/track.gpx',
+  intersegment_behavior: :interpolate
+)
+w.at('2014-01-02T00:00:00Z')
+#=> {lat: 48.0, lon: 98.0, elevation: 1000}
 ```

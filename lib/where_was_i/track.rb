@@ -5,7 +5,7 @@ module WhereWasI
 
   # a series of sequential [lat, lon, elevation] points
   class Track
-    attr_reader :start_time, :end_time
+    attr_reader :start_time, :end_time, :start_location, :end_location
 
     def initialize
       @points = {}
@@ -20,8 +20,16 @@ module WhereWasI
     def add_point(lat:, lon:, elevation:, time:)
       time = Time.parse(time) if ! time.is_a?(Time)
 
-      @start_time = time if @start_time.nil? || time < @start_time
-      @end_time   = time if @end_time.nil?   || time > @end_time
+      if @start_time.nil? || time < @start_time
+        @start_time     = time
+        @start_location = [lat, lon, elevation]
+      end
+
+      if @end_time.nil?   || time > @end_time
+        @end_time     = time
+        @end_location = [lat, lon, elevation]
+      end
+
       @points[time.to_i] = [lat, lon, elevation]
 
       true

@@ -47,5 +47,14 @@ RSpec.describe WhereWasI::Gpx do
       expect(subject.at('2014-06-17T12:00:00Z')).to eq nil
     end
 
+    it "should do inter-track interpolation" do
+      subject = WhereWasI::Gpx.new(gpx_file: test_filename, intersegment_behavior: :interpolate)
+      expect(subject.at('2014-06-17T12:00:00Z')).to eq({
+        lat: 48.83369014598429,
+        lon: -87.5201552733779,
+        elevation: 183.75
+      })
+    end
+
   end
 end
