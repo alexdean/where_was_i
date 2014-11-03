@@ -4,7 +4,7 @@ module WhereWasI
 
   # Use a GPX file as a data source for location inferences.
   class Gpx
-    attr_reader :tracks, :intersegment_behavior
+    attr_reader :intersegment_behavior
 
     Infinity = 1.0/0
 
@@ -34,6 +34,11 @@ module WhereWasI
       @intersegment_behavior = intersegment_behavior
 
       @tracks_added = false
+    end
+
+    def tracks
+      add_tracks if ! @tracks_added
+      @tracks
     end
 
     # extract track data from gpx data
