@@ -50,10 +50,47 @@ RSpec.describe WhereWasI::Gpx do
     it "should do inter-track interpolation" do
       subject = WhereWasI::Gpx.new(gpx_file: test_filename, intersegment_behavior: :interpolate)
       expect(subject.at('2014-06-17T12:00:00Z')).to eq({
-        lat: 48.83369014598429,
-        lon: -87.5201552733779,
-        elevation: 183.75
+        elevation: 187.56424463380702,
+        lat: 48.75755751944594,
+        lon: -87.60709448942973
       })
+    end
+
+    describe "nearest behavior" do
+      let(:subject) {WhereWasI::Gpx.new(gpx_file: test_filename, intersegment_behavior: :nearest)}
+
+      it "should return start of first segment for a time earlier than the first segment" do
+        expect(subject.intersegment_behavior).to eq :nearest
+        expect(subject.at('2014-06-16T16:00:00Z')).to eq({
+          lat: 48.833804307505488,
+          lon: -87.519973134621978,
+          elevation: 186.150000000000006
+        })
+      end
+
+      it "should return the end of the last segment for a time after the end of the last segment" do
+        expect(subject.at('2014-06-17T15:00:00Z')).to eq({
+          lat: 48.747312789782882,
+          lon: -87.618932314217091,
+          elevation: 188.080000000000013
+        })
+      end
+
+      it "should return the closest segment beginning when between segments but nearer to a begin" do
+        expect(subject.at('2014-06-16T17:00:00Z')).to eq({
+          lat: 48.833690145984292,
+          lon: -87.520155273377895,
+          elevation: 183.75
+        })
+      end
+
+      it "should return the closest segment ending when between segments but nearer to an end" do
+        expect(subject.at('2014-06-17T13:00:00Z')).to eq({
+          lat: 48.747263001278043,
+          lon: -87.618850255385041,
+          elevation: 188.080000000000013
+        })
+      end
     end
 
   end
