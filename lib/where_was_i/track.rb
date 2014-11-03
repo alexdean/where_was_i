@@ -19,6 +19,12 @@ module WhereWasI
       @points = {}
     end
 
+    def points
+      @points.map do |time,location|
+        self.class.array_to_hash(location)
+      end
+    end
+
     # add a point to the track
     #
     # @param [Float] lat latitude
