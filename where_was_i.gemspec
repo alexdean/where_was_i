@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["alex@crackpot.org"]
   spec.summary       = %q{Infer where you were using a GPX data file.}
   spec.description   = %q{Given a GPX file and a time reference, return a location.}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/alexdean/where_was_i"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
