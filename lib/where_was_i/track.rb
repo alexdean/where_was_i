@@ -78,7 +78,7 @@ module WhereWasI
       if time.is_a?(String)
         time = Time.parse(time)
       end
-      if time.is_a?(Fixnum)
+      if time.is_a?(Integer)
         time = Time.at(time)
       end
       raise ArgumentError, "time must be a Time,String, or Fixnum" if ! time.is_a?(Time)
