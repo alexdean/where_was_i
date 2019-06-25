@@ -7,7 +7,7 @@ Gem::Specification.new do |spec|
   spec.name          = "where_was_i"
   spec.version       = WhereWasI::VERSION
   spec.authors       = ["Alex Dean"]
-  spec.email         = ["alex@crackpot.org"]
+  spec.email         = ["github@mostlyalex.com"]
   spec.summary       = %q{Infer where you were using a GPX data file.}
   spec.description   = %q{Given a GPX file and a time reference, return a location.}
   spec.homepage      = "https://github.com/alexdean/where_was_i"
@@ -30,4 +30,5 @@ Gem::Specification.new do |spec|
   spec.add_development_dependency "github-markup",  "~> 1.3.0"
   spec.add_development_dependency "redcarpet",      "~> 3.2.0"
   spec.add_development_dependency "ruby_gntp",      "~> 0.3.0"
+  spec.add_development_dependency "bundler-audit"
 end
